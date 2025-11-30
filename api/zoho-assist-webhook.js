@@ -27,8 +27,14 @@ const ZOHO_ASSIST_EVENTS = {
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, HEAD');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Content-Type', 'application/json');
+
+  // Handle HEAD request for SalesIQ validation
+  if (req.method === 'HEAD') {
+    return res.status(200).end();
+  }
 
   // Handle OPTIONS for CORS
   if (req.method === 'OPTIONS') {

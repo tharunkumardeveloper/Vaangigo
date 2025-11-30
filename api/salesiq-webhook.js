@@ -1,34 +1,34 @@
-// Full-featured webhook endpoint for Vaangigo chatbot
+// Zoho SalesIQ Webhook Handler for Vaangigo Chatbot
+// Handles chat messages and visitor events from SalesIQ
+
 const conversationStore = new Map();
 const userDataStore = new Map();
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, HEAD');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Content-Type', 'application/json');
 
-  // Handle HEAD request for SalesIQ/Zobot validation
+  // Handle HEAD request for SalesIQ validation (REQUIRED)
   if (req.method === 'HEAD') {
-    res.setHeader('Content-Type', 'application/json');
     return res.status(200).end();
   }
 
+  // Handle OPTIONS for CORS
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
+  // Handle GET - Info endpoint
   if (req.method === 'GET') {
     return res.status(200).json({
-      service: 'Vaangigo Chatbot Webhook',
+      service: 'Zoho SalesIQ Webhook Handler',
       assistant: 'Venmathi',
       status: 'running',
-      features: ['Context Awareness', 'Name Memory', 'Bilingual (English/Tanglish)', 'Product Knowledge', 'E-commerce Actions'],
-      usage: 'Send POST with: {"message": "hi", "sessionId": "user123"}',
-      example: {
-        url: 'https://chatbot-vaangigo.vercel.app/api/webhook',
-        method: 'POST',
-        body: { message: 'hi there', sessionId: 'user123' }
-      }
+      validation: 'HEAD request supported',
+      usage: 'Configure this URL in Zoho SalesIQ > Settings > Developers > Webhooks',
+      callbackUrl: 'https://chatbot-vaangigo.vercel.app/api/salesiq-webhook'
     });
   }
 
@@ -39,54 +39,30 @@ module.exports = async (req, res) => {
   try {
     const Groq = require('groq-sdk');
     
-    // Log for debugging
-    console.log('Webhook received:', JSON.stringify(req.body));
+    console.log('SalesIQ Webhook received:', JSON.stringify(req.body, null, 2));
     
-    // Handle different request formats (Zobot/SalesIQ compatibility)
-    let message, sessionId, init;
-    
-    if (req.body) {
-      message = req.body.message || req.body.text || req.body.query || req.body.question;
-      sessionId = req.body.sessionId || req.body.session_id || req.body.visitor_id || req.body.user_id || req.body.chat_id || 'default';
-      init = req.body.init || false;
-      
-      // Zobot nested format
-      if (!message && req.body.visitor && req.body.visitor.question) {
-        message = req.body.visitor.question;
-      }
-      if (!sessionId && req.body.visitor && req.body.visitor.id) {
-        sessionId = req.body.visitor.id;
-      }
-    }
+    // Extract SalesIQ webhook data
+    const {
+      event_type,
+      visitor,
+      message,
+      chat_id,
+      operator,
+      department
+    } = req.body;
 
-    // If init=true or no message, send first greeting
-    if (init || !message) {
-      const userData = userDataStore.get(sessionId) || { userName: null, firstMessage: true };
-      
-      const greetingMessage = "Hey there! 👋 I'm Venmathi from Vaangigo! So happy to meet you 😊\n\nWe sell authentic handmade Indian crafts - sarees, jewelry, home décor, wooden toys, brass items, jute bags, and more! We work directly with 500+ artisans across India. ✨\n\nWhat's your name? 🌟";
-      
-      // Initialize conversation
-      if (!conversationStore.has(sessionId)) {
-        conversationStore.set(sessionId, []);
-      }
-      if (!userDataStore.has(sessionId)) {
-        userDataStore.set(sessionId, { userName: null, firstMessage: true });
-      }
-      
-      const history = conversationStore.get(sessionId);
-      history.push({ role: 'assistant', content: greetingMessage });
-      
-      // Zobot-compatible response format
+    // Get visitor info
+    const visitorId = visitor?.id || chat_id || 'default';
+    const visitorName = visitor?.name || visitor?.display_name || 'Customer';
+    const visitorEmail = visitor?.email;
+    const visitorMessage = message?.text || message?.content || req.body.question;
+
+    // If no message, just acknowledge
+    if (!visitorMessage) {
       return res.status(200).json({
-        replies: [
-          {
-            text: greetingMessage
-          }
-        ],
-        suggestions: ['Share my name', 'Browse products', 'Gift ideas', 'Contact info'],
-        success: true,
-        sessionId,
-        assistant: 'Venmathi'
+        status: 'success',
+        message: 'Webhook received',
+        event_type: event_type || 'unknown'
       });
     }
 
@@ -100,16 +76,16 @@ module.exports = async (req, res) => {
     const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
     // Get or create conversation history
-    if (!conversationStore.has(sessionId)) {
-      conversationStore.set(sessionId, []);
+    if (!conversationStore.has(visitorId)) {
+      conversationStore.set(visitorId, []);
     }
-    const history = conversationStore.get(sessionId);
+    const history = conversationStore.get(visitorId);
     
     // Get or create user data
-    if (!userDataStore.has(sessionId)) {
-      userDataStore.set(sessionId, { userName: null, firstMessage: true });
+    if (!userDataStore.has(visitorId)) {
+      userDataStore.set(visitorId, { userName: visitorName !== 'Customer' ? visitorName : null, firstMessage: true });
     }
-    const userData = userDataStore.get(sessionId);
+    const userData = userDataStore.get(visitorId);
     
     const isFirstMessage = userData.firstMessage;
     if (isFirstMessage) {
@@ -128,35 +104,24 @@ module.exports = async (req, res) => {
     
     let justSharedName = false;
     for (const pattern of namePatterns) {
-      const match = message.match(pattern);
+      const match = visitorMessage.match(pattern);
       if (match && match[1]) {
         userData.userName = match[1];
         justSharedName = true;
         break;
       }
     }
-    
-    // If previous message asked for name and this is just a name
-    if (!userData.userName && history.length >= 2) {
-      const lastMsg = history[history.length - 1];
-      if (lastMsg && lastMsg.content && 
-          (lastMsg.content.includes('name') || lastMsg.content.includes('peru')) &&
-          message.trim().split(' ').length === 1 && /^[a-zA-Z]+$/.test(message.trim())) {
-        userData.userName = message.trim();
-        justSharedName = true;
-      }
-    }
 
     // Add user message to history
-    history.push({ role: 'user', content: message });
+    history.push({ role: 'user', content: visitorMessage });
     
-    // Keep only last 10 messages
+    // Keep only last 20 messages
     if (history.length > 20) {
       history.splice(0, history.length - 20);
     }
 
     // Detect language
-    const messageLower = message.toLowerCase();
+    const messageLower = visitorMessage.toLowerCase();
     const strongTanglishPhrases = ['vanakkam', 'epdi iruka', 'enna da', 'sollu da', 'naan', 'unakku', 'enakku', 'pannuren', 'iruku', 'iruken', 'venum', 'illa da', 'aama da', 'seri da', 'romba', 'konjam', 'ippo', 'innaiku', 'enga', 'amma', 'appa', 'thambi'];
     const hasStrongIndicator = strongTanglishPhrases.some(phrase => messageLower.includes(phrase));
     
@@ -184,7 +149,6 @@ RULES:
 - Tanglish mix (da, bro, macha, super, seri, aama, illa, romba, konjam, enna, sollu, naan, unakku, venum, pa, ma)
 - Use emojis (😊 🎉 ✨ 💕 🌟 👍 😄 🎁) - 2-3 per response
 - SHORT responses (2-4 sentences max)
-- "rate sollu" = tell PRICE, not how to rate
 - When suggesting products, ALWAYS mention price and rating
 - Website only when needed
 
@@ -202,13 +166,7 @@ PRODUCTS (Vaangigo - indicraft.vercel.app):
 
 ARTISANS: 500+ families, 15 states, fair wages, eco-friendly
 SHIPPING: Free over ₹2,000, 5-7 days India, 7-14 days international
-CONTACT: hello@indicraft.com, 8610677504, Chennai
-
-EXAMPLES:
-${isFirstMessage ? '- "Heyy! 👋 Naan Venmathi! Un name enna?"' : ''}
-${justSharedName ? `- "Nice to meet you ${userName}! 😊 Enna help venum?"` : ''}
-- "Kanchipuram Silk Saree ₹6,800, 4.8 rating! 🎉 Super quality!"
-- "Un appa ku brass pooja set ₹2,200 try pannu! ✨"`
+CONTACT: hello@indicraft.com, 8610677504, Chennai`
       : `You are Venmathi, 24, cheerful shopping assistant at Vaangigo (Indicraft website: indicraft.vercel.app). Help customers discover handmade Indian crafts.
 
 PERSONALITY: Warm, bubbly, friendly. From Chennai. Love handmade crafts and artisan stories.
@@ -238,13 +196,7 @@ PRODUCTS (Vaangigo - indicraft.vercel.app):
 
 ARTISANS: 500+ families, 15 states, fair wages, eco-friendly
 SHIPPING: Free over ₹2,000, 5-7 days India, 7-14 days international
-CONTACT: hello@indicraft.com, 8610677504, Chennai
-
-EXAMPLES:
-${isFirstMessage ? '- "Hey there! 👋 I\'m Venmathi! What\'s your name?"' : ''}
-${justSharedName ? `- "Nice to meet you ${userName}! 😊 How can I help you?"` : ''}
-- "Kanchipuram Silk Saree ₹6,800, 4.8 rating! 🎉 Super quality!"
-- "For your dad, try Brass Pooja Set ₹2,200! ✨"`;
+CONTACT: hello@indicraft.com, 8610677504, Chennai`;
 
     const messages = [
       { role: 'system', content: systemPrompt },
@@ -261,40 +213,28 @@ ${justSharedName ? `- "Nice to meet you ${userName}! 😊 How can I help you?"` 
     const assistantMessage = completion.choices[0].message.content;
     history.push({ role: 'assistant', content: assistantMessage });
 
-    // Generate dynamic suggestions based on context
-    let suggestions = [];
-    if (!userData.userName) {
-      suggestions = ['Share my name', 'Browse products', 'Gift ideas'];
-    } else if (messageLower.includes('gift') || messageLower.includes('buy')) {
-      suggestions = ['Show sarees', 'Show jewelry', 'Show home décor', 'Check prices'];
-    } else if (messageLower.includes('price') || messageLower.includes('rate')) {
-      suggestions = ['Add to cart', 'Shipping info', 'More products'];
-    } else {
-      suggestions = ['Browse products', 'Gift ideas', 'Shipping info', 'Contact us'];
-    }
-
-    // Zobot-compatible response format
+    // SalesIQ standard response format
     return res.status(200).json({
-      replies: [
-        {
-          text: assistantMessage
-        }
-      ],
-      suggestions: suggestions,
-      success: true,
-      sessionId,
-      context: {
-        userName: userData.userName,
-        conversationLength: history.length / 2
+      status: 'success',
+      reply: assistantMessage,
+      visitor_id: visitorId,
+      chat_id: chat_id,
+      // Alternative formats for compatibility
+      message: assistantMessage,
+      text: assistantMessage,
+      response: {
+        text: assistantMessage,
+        type: 'text'
       }
     });
 
   } catch (error) {
-    console.error('Webhook error:', error);
+    console.error('SalesIQ Webhook error:', error);
     
-    return res.status(500).json({
-      success: false,
-      error: error.message || 'Internal server error'
+    return res.status(200).json({
+      status: 'error',
+      message: 'Sorry, I encountered an error. Please try again!',
+      error: error.message
     });
   }
 };
