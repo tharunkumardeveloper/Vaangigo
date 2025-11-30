@@ -37,7 +37,26 @@ module.exports = async (req, res) => {
 
   try {
     const Groq = require('groq-sdk');
-    const { message, sessionId = 'default', init = false } = req.body || {};
+    
+    // Log for debugging
+    console.log('Webhook received:', JSON.stringify(req.body));
+    
+    // Handle different request formats (Zobot/SalesIQ compatibility)
+    let message, sessionId, init;
+    
+    if (req.body) {
+      message = req.body.message || req.body.text || req.body.query || req.body.question;
+      sessionId = req.body.sessionId || req.body.session_id || req.body.visitor_id || req.body.user_id || req.body.chat_id || 'default';
+      init = req.body.init || false;
+      
+      // Zobot nested format
+      if (!message && req.body.visitor && req.body.visitor.question) {
+        message = req.body.visitor.question;
+      }
+      if (!sessionId && req.body.visitor && req.body.visitor.id) {
+        sessionId = req.body.visitor.id;
+      }
+    }
 
     // If init=true or no message, send first greeting
     if (init || !message) {
