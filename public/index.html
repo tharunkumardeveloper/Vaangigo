@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaangigo Chatbot API</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .status {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        .endpoint {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .endpoint h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .method {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .url {
+            font-family: 'Courier New', monospace;
+            background: #e5e7eb;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        code {
+            background: #1f2937;
+            color: #10b981;
+            padding: 15px;
+            border-radius: 5px;
+            display: block;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            color: #666;
+        }
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Vaangigo Chatbot API</h1>
+        <p class="subtitle">AI-powered shopping assistant with Venmathi</p>
+        <span class="status">✓ API Running</span>
+
+        <div class="endpoint">
+            <h3>Chat Endpoint</h3>
+            <span class="method">POST</span>
+            <div class="url">/api/chat</div>
+            <p>Chat with Venmathi, our AI shopping assistant</p>
+            <code>curl -X POST https://your-domain.vercel.app/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "hi there", "sessionId": "user123"}'</code>
+        </div>
+
+        <div class="endpoint">
+            <h3>Health Check</h3>
+            <span class="method">GET</span>
+            <div class="url">/api/health</div>
+            <p>Check API status</p>
+            <code>curl https://your-domain.vercel.app/api/health</code>
+        </div>
+
+        <div class="footer">
+            <p><strong>Vaangigo</strong> - Authentic Indian Handicrafts</p>
+            <p>📧 hello@indicraft.com | 📱 8610677504</p>
+            <p><a href="https://github.com/tharunkumardeveloper/Vaangigo" target="_blank">GitHub</a> | 
+               <a href="https://indicraft.vercel.app" target="_blank">Website</a></p>
+        </div>
+    </div>
+</body>
+</html>
