@@ -27,28 +27,53 @@ module.exports = async (req, res) => {
     return res.end();
   }
 
+  if (req.method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify({
+      service: 'Vaangigo Chatbot API',
+      assistant: 'Venmathi',
+      status: 'running',
+      message: 'Send POST request with JSON body: {"message": "hi", "sessionId": "user123"}',
+      documentation: 'https://github.com/tharunkumardeveloper/Vaangigo'
+    }));
+  }
+
   if (req.method !== 'POST') {
     res.writeHead(405, { 'Content-Type': 'application/json' });
-    return res.end(JSON.stringify({ error: 'Method not allowed' }));
+    return res.end(JSON.stringify({ error: 'Method not allowed. Use POST.' }));
   }
 
   try {
-    const { message, sessionId = 'default', useRAG = true } = req.body;
+    const { message, sessionId = 'default', useRAG = true } = req.body || {};
 
     if (!message) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
-      return res.end(JSON.stringify({ error: 'Message is required' }));
+      return res.end(JSON.stringify({ 
+        success: false,
+        error: 'Message is required',
+        example: { message: 'hi there', sessionId: 'user123' }
+      }));
     }
 
-    await initRAG();
+    // Try to initialize RAG, but continue if it fails
+    try {
+      await initRAG();
+    } catch (ragError) {
+      console.error('RAG initialization failed:', ragError);
+    }
+
     contextManager.addMessage(sessionId, 'user', message);
 
     let contextPrompt = '';
     let relevantDocs = [];
 
     if (useRAG && ragSystem) {
-      relevantDocs = await ragSystem.retrieveRelevantDocs(message, 3);
-      contextPrompt = ragSystem.buildContextPrompt(relevantDocs);
+      try {
+        relevantDocs = await ragSystem.retrieveRelevantDocs(message, 3);
+        contextPrompt = ragSystem.buildContextPrompt(relevantDocs);
+      } catch (ragError) {
+        console.error('RAG retrieval failed:', ragError);
+      }
     }
 
     const conversationHistory = contextManager.getMessages(sessionId);
