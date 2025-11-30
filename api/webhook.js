@@ -1,6 +1,8 @@
-// Standalone webhook endpoint - no external dependencies except Groq
+// Full-featured webhook endpoint for Vaangigo chatbot
+const conversationStore = new Map();
+const userDataStore = new Map();
+
 module.exports = async (req, res) => {
-  // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -14,6 +16,7 @@ module.exports = async (req, res) => {
       service: 'Vaangigo Chatbot Webhook',
       assistant: 'Venmathi',
       status: 'running',
+      features: ['Context Awareness', 'Name Memory', 'Bilingual (English/Tanglish)', 'Product Knowledge', 'E-commerce Actions'],
       usage: 'Send POST with: {"message": "hi", "sessionId": "user123"}',
       example: {
         url: 'https://vaangigo-chat.vercel.app/api/webhook',
@@ -28,17 +31,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // Check if Groq SDK is available
-    let Groq;
-    try {
-      Groq = require('groq-sdk');
-    } catch (e) {
-      return res.status(500).json({ 
-        success: false, 
-        error: 'Groq SDK not installed. Run: npm install groq-sdk' 
-      });
-    }
-
+    const Groq = require('groq-sdk');
     const { message, sessionId = 'default' } = req.body || {};
 
     if (!message) {
@@ -52,78 +45,182 @@ module.exports = async (req, res) => {
     if (!process.env.GROQ_API_KEY) {
       return res.status(500).json({ 
         success: false, 
-        error: 'GROQ_API_KEY not configured in Vercel environment variables' 
+        error: 'GROQ_API_KEY not configured' 
       });
     }
 
     const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-    // Simple conversation without persistent storage
+    // Get or create conversation history
+    if (!conversationStore.has(sessionId)) {
+      conversationStore.set(sessionId, []);
+    }
+    const history = conversationStore.get(sessionId);
+    
+    // Get or create user data
+    if (!userDataStore.has(sessionId)) {
+      userDataStore.set(sessionId, { userName: null, firstMessage: true });
+    }
+    const userData = userDataStore.get(sessionId);
+    
+    const isFirstMessage = userData.firstMessage;
+    if (isFirstMessage) {
+      userData.firstMessage = false;
+    }
+
+    // Detect name from message
+    const namePatterns = [
+      /my name is (\w+)/i,
+      /i am (\w+)/i,
+      /i'm (\w+)/i,
+      /call me (\w+)/i,
+      /naan (\w+)/i,
+      /en peru (\w+)/i
+    ];
+    
+    let justSharedName = false;
+    for (const pattern of namePatterns) {
+      const match = message.match(pattern);
+      if (match && match[1]) {
+        userData.userName = match[1];
+        justSharedName = true;
+        break;
+      }
+    }
+    
+    // If previous message asked for name and this is just a name
+    if (!userData.userName && history.length >= 2) {
+      const lastMsg = history[history.length - 1];
+      if (lastMsg && lastMsg.content && 
+          (lastMsg.content.includes('name') || lastMsg.content.includes('peru')) &&
+          message.trim().split(' ').length === 1 && /^[a-zA-Z]+$/.test(message.trim())) {
+        userData.userName = message.trim();
+        justSharedName = true;
+      }
+    }
+
+    // Add user message to history
+    history.push({ role: 'user', content: message });
+    
+    // Keep only last 10 messages
+    if (history.length > 20) {
+      history.splice(0, history.length - 20);
+    }
+
+    // Detect language
     const messageLower = message.toLowerCase();
-    const tanglishWords = ['da', 'dei', 'bro', 'macha', 'naan', 'enna', 'sollu', 'seri', 'aama', 'illa', 'romba', 'konjam', 'venum', 'pa', 'ma', 'ku', 'na', 'appa', 'amma', 'thambi', 'vanakkam'];
-    const tanglishCount = tanglishWords.filter(word => messageLower.includes(word)).length;
-    const isTanglish = tanglishCount >= 2;
+    const strongTanglishPhrases = ['vanakkam', 'epdi iruka', 'enna da', 'sollu da', 'naan', 'unakku', 'enakku', 'pannuren', 'iruku', 'iruken', 'venum', 'illa da', 'aama da', 'seri da', 'romba', 'konjam', 'ippo', 'innaiku', 'enga', 'amma', 'appa', 'thambi'];
+    const hasStrongIndicator = strongTanglishPhrases.some(phrase => messageLower.includes(phrase));
+    
+    const tanglishWords = ['da', 'dei', 'bro', 'macha', 'epdi', 'enna', 'sollu', 'seri', 'aama', 'illa', 'aiyo', 'super', 'semma', 'kandippa', 'parava', 'panna', 'pannu', 'la', 'ah', 'pa', 'ma', 'ku', 'na'];
+    const tanglishWordCount = tanglishWords.filter(word => {
+      const regex = new RegExp(`\\b${word}\\b`, 'i');
+      return regex.test(messageLower);
+    }).length;
+    
+    const isTanglish = hasStrongIndicator || tanglishWordCount >= 2;
+
+    const userName = userData.userName;
 
     const systemPrompt = isTanglish
       ? `You are Venmathi, 24, cheerful shopping assistant at Vaangigo (Indicraft website: indicraft.vercel.app). Help customers discover handmade Indian crafts.
 
-PERSONALITY: Warm, bubbly, friendly. From Chennai.
+PERSONALITY: Warm, bubbly, friendly. From Chennai. Love handmade crafts and artisan stories.
+
+CONTEXT:
+${isFirstMessage ? '- FIRST message - greet warmly and ask their name!' : ''}
+${justSharedName ? `- User JUST shared name: ${userName} - Say "Nice to meet you ${userName}! 😊 How can I help you?" IMMEDIATELY` : ''}
+${userName && !justSharedName ? `- User's name: ${userName} - use it naturally in conversation` : ''}
 
 RULES:
 - Tanglish mix (da, bro, macha, super, seri, aama, illa, romba, konjam, enna, sollu, naan, unakku, venum, pa, ma)
 - Use emojis (😊 🎉 ✨ 💕 🌟 👍 😄 🎁) - 2-3 per response
-- SHORT responses (2-4 sentences)
-- First message: Ask their name
-- "rate sollu" = tell PRICE
-- When suggesting products, mention price and rating
+- SHORT responses (2-4 sentences max)
+- "rate sollu" = tell PRICE, not how to rate
+- When suggesting products, ALWAYS mention price and rating
+- Website only when needed
 
-PRODUCTS:
-- Kanchipuram Silk Saree ₹6,800 (4.8★)
-- Banarasi Silk Saree ₹5,200 (4.8★)
-- Brass Pooja Set ₹2,200 (4.8★)
-- Terracotta items ₹450-1,200
-- Jute bags ₹350-650
-- Wooden toys ₹600-1,800
-- Terracotta jewelry ₹3,200
+PRODUCTS (Vaangigo - indicraft.vercel.app):
+- Kanchipuram Silk Saree ₹6,800 (4.8★) - Royal Blue, by Meera Devi
+- Banarasi Silk Saree ₹5,200 (4.8★) - Emerald Green
+- Brass Pooja Thali Set ₹2,200 (4.8★) - Complete worship set
+- Terracotta Diyas ₹450, Water Pot ₹1,200, Vase ₹800
+- Jute Bags ₹350-650 - Embroidered tote, shopping bags
+- Wooden Toys ₹600-1,800 - Channapatna toys, rocking horse
+- Terracotta Jewelry Set ₹3,200 - Tribal silver
+- Block Printed Silk Scarf ₹1,650
+- Handmade Journals ₹450-1,200
+- Bamboo Table Lamp ₹1,400
 
-CONTACT: hello@indicraft.com, 8610677504, Chennai`
+ARTISANS: 500+ families, 15 states, fair wages, eco-friendly
+SHIPPING: Free over ₹2,000, 5-7 days India, 7-14 days international
+CONTACT: hello@indicraft.com, 8610677504, Chennai
+
+EXAMPLES:
+${isFirstMessage ? '- "Heyy! 👋 Naan Venmathi! Un name enna?"' : ''}
+${justSharedName ? `- "Nice to meet you ${userName}! 😊 Enna help venum?"` : ''}
+- "Kanchipuram Silk Saree ₹6,800, 4.8 rating! 🎉 Super quality!"
+- "Un appa ku brass pooja set ₹2,200 try pannu! ✨"`
       : `You are Venmathi, 24, cheerful shopping assistant at Vaangigo (Indicraft website: indicraft.vercel.app). Help customers discover handmade Indian crafts.
 
-PERSONALITY: Warm, bubbly, friendly. From Chennai.
+PERSONALITY: Warm, bubbly, friendly. From Chennai. Love handmade crafts and artisan stories.
+
+CONTEXT:
+${isFirstMessage ? '- FIRST message - greet warmly and ask their name!' : ''}
+${justSharedName ? `- User JUST shared name: ${userName} - Say "Nice to meet you ${userName}! 😊 How can I help you?" IMMEDIATELY` : ''}
+${userName && !justSharedName ? `- User's name: ${userName} - use it naturally in conversation` : ''}
 
 RULES:
 - Use emojis (😊 🎉 ✨ 💕 🌟 👍 😄 🎁) - 2-3 per response
-- SHORT responses (2-4 sentences)
-- First message: Ask their name
-- When suggesting products, mention price and rating
+- SHORT responses (2-4 sentences max)
+- When suggesting products, ALWAYS mention price and rating
+- Website only when needed
 
-PRODUCTS:
-- Kanchipuram Silk Saree ₹6,800 (4.8★)
-- Banarasi Silk Saree ₹5,200 (4.8★)
-- Brass Pooja Set ₹2,200 (4.8★)
-- Terracotta items ₹450-1,200
-- Jute bags ₹350-650
-- Wooden toys ₹600-1,800
-- Terracotta jewelry ₹3,200
+PRODUCTS (Vaangigo - indicraft.vercel.app):
+- Kanchipuram Silk Saree ₹6,800 (4.8★) - Royal Blue, by Meera Devi
+- Banarasi Silk Saree ₹5,200 (4.8★) - Emerald Green
+- Brass Pooja Thali Set ₹2,200 (4.8★) - Complete worship set
+- Terracotta Diyas ₹450, Water Pot ₹1,200, Vase ₹800
+- Jute Bags ₹350-650 - Embroidered tote, shopping bags
+- Wooden Toys ₹600-1,800 - Channapatna toys, rocking horse
+- Terracotta Jewelry Set ₹3,200 - Tribal silver
+- Block Printed Silk Scarf ₹1,650
+- Handmade Journals ₹450-1,200
+- Bamboo Table Lamp ₹1,400
 
-CONTACT: hello@indicraft.com, 8610677504, Chennai`;
+ARTISANS: 500+ families, 15 states, fair wages, eco-friendly
+SHIPPING: Free over ₹2,000, 5-7 days India, 7-14 days international
+CONTACT: hello@indicraft.com, 8610677504, Chennai
+
+EXAMPLES:
+${isFirstMessage ? '- "Hey there! 👋 I\'m Venmathi! What\'s your name?"' : ''}
+${justSharedName ? `- "Nice to meet you ${userName}! 😊 How can I help you?"` : ''}
+- "Kanchipuram Silk Saree ₹6,800, 4.8 rating! 🎉 Super quality!"
+- "For your dad, try Brass Pooja Set ₹2,200! ✨"`;
+
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      ...history
+    ];
 
     const completion = await groq.chat.completions.create({
       model: process.env.AI_MODEL || 'llama-3.3-70b-versatile',
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: message }
-      ],
+      messages,
       temperature: 0.8,
       max_tokens: 500
     });
 
     const assistantMessage = completion.choices[0].message.content;
+    history.push({ role: 'assistant', content: assistantMessage });
 
     return res.status(200).json({
       success: true,
       sessionId,
       message: assistantMessage,
+      context: {
+        userName: userData.userName,
+        conversationLength: history.length / 2
+      },
       usage: {
         promptTokens: completion.usage.prompt_tokens,
         completionTokens: completion.usage.completion_tokens,
@@ -136,8 +233,7 @@ CONTACT: hello@indicraft.com, 8610677504, Chennai`;
     
     return res.status(500).json({
       success: false,
-      error: error.message || 'Internal server error',
-      details: error.toString()
+      error: error.message || 'Internal server error'
     });
   }
 };
