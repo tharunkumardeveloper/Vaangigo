@@ -57,7 +57,9 @@ module.exports = async (req, res) => {
         message: greetingMessage,
         assistant: 'Venmathi',
         service: 'Vaangigo',
-        initialized: true
+        initialized: true,
+        suggestions: ['Share my name', 'Browse products', 'Gift ideas', 'Contact info'],
+        quickReplies: ['Share my name', 'Browse products', 'Gift ideas', 'Contact info']
       });
     }
 
@@ -232,10 +234,24 @@ ${justSharedName ? `- "Nice to meet you ${userName}! 😊 How can I help you?"` 
     const assistantMessage = completion.choices[0].message.content;
     history.push({ role: 'assistant', content: assistantMessage });
 
+    // Generate dynamic suggestions based on context
+    let suggestions = [];
+    if (!userData.userName) {
+      suggestions = ['Share my name', 'Browse products', 'Gift ideas'];
+    } else if (messageLower.includes('gift') || messageLower.includes('buy')) {
+      suggestions = ['Show sarees', 'Show jewelry', 'Show home décor', 'Check prices'];
+    } else if (messageLower.includes('price') || messageLower.includes('rate')) {
+      suggestions = ['Add to cart', 'Shipping info', 'More products'];
+    } else {
+      suggestions = ['Browse products', 'Gift ideas', 'Shipping info', 'Contact us'];
+    }
+
     return res.status(200).json({
       success: true,
       sessionId,
       message: assistantMessage,
+      suggestions: suggestions,
+      quickReplies: suggestions,
       context: {
         userName: userData.userName,
         conversationLength: history.length / 2
