@@ -91,9 +91,14 @@ module.exports = async (req, res) => {
     }
 
     if (!process.env.GROQ_API_KEY) {
-      return res.status(500).json({ 
-        success: false, 
-        error: 'GROQ_API_KEY not configured' 
+      return res.status(200).json({
+        replies: [
+          {
+            text: "Sorry, I'm not configured properly yet! 😅 Please contact hello@indicraft.com for help!"
+          }
+        ],
+        success: false,
+        error: 'GROQ_API_KEY not configured'
       });
     }
 
@@ -292,9 +297,15 @@ ${justSharedName ? `- "Nice to meet you ${userName}! 😊 How can I help you?"` 
   } catch (error) {
     console.error('Webhook error:', error);
     
-    return res.status(500).json({
+    // Return 200 with error message for Zobot compatibility
+    return res.status(200).json({
+      replies: [
+        {
+          text: "Oops! I'm having a small technical issue 😅 Can you try again? Or contact us at hello@indicraft.com!"
+        }
+      ],
       success: false,
-      error: error.message || 'Internal server error'
+      error: error.message
     });
   }
 };
