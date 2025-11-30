@@ -48,7 +48,7 @@ module.exports = async (req, res) => {
 
     if (!message) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
-      return res.end(JSON.stringify({ 
+      return res.end(JSON.stringify({
         success: false,
         error: 'Message is required',
         example: { message: 'hi there', sessionId: 'user123' }
