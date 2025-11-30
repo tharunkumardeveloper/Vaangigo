@@ -32,13 +32,32 @@ module.exports = async (req, res) => {
 
   try {
     const Groq = require('groq-sdk');
-    const { message, sessionId = 'default' } = req.body || {};
+    const { message, sessionId = 'default', init = false } = req.body || {};
 
-    if (!message) {
-      return res.status(400).json({ 
-        success: false,
-        error: 'Message is required',
-        example: { message: 'hi there', sessionId: 'user123' }
+    // If init=true or no message, send first greeting
+    if (init || !message) {
+      const userData = userDataStore.get(sessionId) || { userName: null, firstMessage: true };
+      
+      const greetingMessage = "Hey there! 👋 I'm Venmathi from Vaangigo! So happy to meet you 😊\n\nWe sell authentic handmade Indian crafts - sarees, jewelry, home décor, wooden toys, brass items, jute bags, and more! We work directly with 500+ artisans across India. ✨\n\nWhat's your name? 🌟";
+      
+      // Initialize conversation
+      if (!conversationStore.has(sessionId)) {
+        conversationStore.set(sessionId, []);
+      }
+      if (!userDataStore.has(sessionId)) {
+        userDataStore.set(sessionId, { userName: null, firstMessage: true });
+      }
+      
+      const history = conversationStore.get(sessionId);
+      history.push({ role: 'assistant', content: greetingMessage });
+      
+      return res.status(200).json({
+        success: true,
+        sessionId,
+        message: greetingMessage,
+        assistant: 'Venmathi',
+        service: 'Vaangigo',
+        initialized: true
       });
     }
 
