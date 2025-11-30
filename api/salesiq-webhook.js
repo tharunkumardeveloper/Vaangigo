@@ -57,12 +57,12 @@ module.exports = async (req, res) => {
     const visitorEmail = visitor?.email;
     const visitorMessage = message?.text || message?.content || req.body.question;
 
-    // If no message, just acknowledge
+    // If no message, send greeting
     if (!visitorMessage) {
+      const greeting = "Hey there! 👋 I'm Venmathi from Vaangigo! How can I help you today? 😊";
       return res.status(200).json({
-        status: 'success',
-        message: 'Webhook received',
-        event_type: event_type || 'unknown'
+        reply: greeting,
+        status: 'success'
       });
     }
 
@@ -213,28 +213,16 @@ CONTACT: hello@indicraft.com, 8610677504, Chennai`;
     const assistantMessage = completion.choices[0].message.content;
     history.push({ role: 'assistant', content: assistantMessage });
 
-    // SalesIQ standard response format
+    // SalesIQ standard response format (reply field is required)
     return res.status(200).json({
-      status: 'success',
-      reply: assistantMessage,
-      visitor_id: visitorId,
-      chat_id: chat_id,
-      // Alternative formats for compatibility
-      message: assistantMessage,
-      text: assistantMessage,
-      response: {
-        text: assistantMessage,
-        type: 'text'
-      }
+      reply: assistantMessage
     });
 
   } catch (error) {
     console.error('SalesIQ Webhook error:', error);
     
     return res.status(200).json({
-      status: 'error',
-      message: 'Sorry, I encountered an error. Please try again!',
-      error: error.message
+      reply: 'Sorry, I encountered an error. Please try again! 😊'
     });
   }
 };
