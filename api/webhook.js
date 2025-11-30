@@ -7,6 +7,11 @@ module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+  // Handle HEAD request for Zobot validation
+  if (req.method === 'HEAD') {
+    return res.status(200).end();
+  }
+
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -19,7 +24,7 @@ module.exports = async (req, res) => {
       features: ['Context Awareness', 'Name Memory', 'Bilingual (English/Tanglish)', 'Product Knowledge', 'E-commerce Actions'],
       usage: 'Send POST with: {"message": "hi", "sessionId": "user123"}',
       example: {
-        url: 'https://vaangigo-chat.vercel.app/api/webhook',
+        url: 'https://chatbot-vaangigo.vercel.app/api/webhook',
         method: 'POST',
         body: { message: 'hi there', sessionId: 'user123' }
       }
@@ -51,15 +56,17 @@ module.exports = async (req, res) => {
       const history = conversationStore.get(sessionId);
       history.push({ role: 'assistant', content: greetingMessage });
       
+      // Zobot-compatible response format
       return res.status(200).json({
+        replies: [
+          {
+            text: greetingMessage
+          }
+        ],
+        suggestions: ['Share my name', 'Browse products', 'Gift ideas', 'Contact info'],
         success: true,
         sessionId,
-        message: greetingMessage,
-        assistant: 'Venmathi',
-        service: 'Vaangigo',
-        initialized: true,
-        suggestions: ['Share my name', 'Browse products', 'Gift ideas', 'Contact info'],
-        quickReplies: ['Share my name', 'Browse products', 'Gift ideas', 'Contact info']
+        assistant: 'Venmathi'
       });
     }
 
@@ -246,20 +253,19 @@ ${justSharedName ? `- "Nice to meet you ${userName}! 😊 How can I help you?"` 
       suggestions = ['Browse products', 'Gift ideas', 'Shipping info', 'Contact us'];
     }
 
+    // Zobot-compatible response format
     return res.status(200).json({
+      replies: [
+        {
+          text: assistantMessage
+        }
+      ],
+      suggestions: suggestions,
       success: true,
       sessionId,
-      message: assistantMessage,
-      suggestions: suggestions,
-      quickReplies: suggestions,
       context: {
         userName: userData.userName,
         conversationLength: history.length / 2
-      },
-      usage: {
-        promptTokens: completion.usage.prompt_tokens,
-        completionTokens: completion.usage.completion_tokens,
-        totalTokens: completion.usage.total_tokens
       }
     });
 
