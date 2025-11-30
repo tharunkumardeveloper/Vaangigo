@@ -1,0 +1,154 @@
+{
+  "documents": [
+    {
+      "id": "search_products",
+      "content": "To search products: Visit indicraft.vercel.app/shop and use search bar. Search by product name, category, artisan name, material, or price range. Examples: 'silk saree', 'terracotta', 'under 1000', 'Meera Devi'. Filter results by category, price, rating, or artisan.",
+      "metadata": { "category": "action", "topic": "search" }
+    },
+    {
+      "id": "view_artisan_profile",
+      "content": "View artisan profiles at indicraft.vercel.app/stores. Each profile shows: artisan photo, location, years of experience, specialties, number of products, rating, income impact, awards, and story. Click 'Visit Store' to see all their products. Contact artisan through hello@indicraft.com.",
+      "metadata": { "category": "action", "topic": "artisan" }
+    },
+    {
+      "id": "read_reviews",
+      "content": "Customer reviews available on each product page. See ratings (4.8+ average), verified purchase reviews, photos from customers, helpful votes. Sort reviews by: Most Recent, Highest Rating, Lowest Rating, Most Helpful. Reviews help you make informed decisions.",
+      "metadata": { "category": "action", "topic": "reviews" }
+    },
+    {
+      "id": "size_guide",
+      "content": "Size information provided on product pages. Sarees: Standard 5.5-6 meters. Bags: Dimensions in cm listed. Jewelry: Adjustable or size mentioned. Custom sizing available - contact hello@indicraft.com. Handmade items may have slight variations (±1-2cm).",
+      "metadata": { "category": "action", "topic": "sizing" }
+    },
+    {
+      "id": "color_options",
+      "content": "Multiple color options available for many products. View all colors on product page. Colors shown are close to actual but may vary slightly due to handmade nature and screen settings. Contact hello@indicraft.com for exact color matching or custom colors.",
+      "metadata": { "category": "action", "topic": "colors" }
+    },
+    {
+      "id": "material_info",
+      "content": "Materials clearly listed on each product: Silk (Kanchipuram, Banarasi), Cotton (handloom, organic), Terracotta (natural clay), Wood (teak, rosewood, sandalwood), Brass (pure brass), Jute (natural fiber), Bamboo (sustainable), Palm leaf (eco-friendly). All materials are authentic and eco-friendly.",
+      "metadata": { "category": "action", "topic": "materials" }
+    },
+    {
+      "id": "create_account",
+      "content": "Create account on indicraft.vercel.app for: Faster checkout, Order tracking, Wishlist saving, Exclusive offers, Order history. Click 'Sign Up', enter email and password. Or sign in with Google/Facebook. Account is free and secure.",
+      "metadata": { "category": "action", "topic": "account" }
+    },
+    {
+      "id": "login_account",
+      "content": "Login to your account: Go to indicraft.vercel.app, click 'Login', enter email and password. Forgot password? Click 'Reset Password' and check email. Login to access: saved cart, wishlist, order history, tracking, saved addresses.",
+      "metadata": { "category": "action", "topic": "login" }
+    },
+    {
+      "id": "update_profile",
+      "content": "Update profile: Login → Go to 'My Account' → Edit profile details (name, email, phone, addresses). Add multiple shipping addresses. Set default address. Update payment preferences. Change password in security settings.",
+      "metadata": { "category": "action", "topic": "profile" }
+    },
+    {
+      "id": "wishlist_management",
+      "content": "Manage wishlist: Click heart icon on products to add. View all wishlist items in 'My Wishlist'. Move items to cart when ready. Share wishlist with friends. Get notifications when wishlist items go on sale or back in stock.",
+      "metadata": { "category": "action", "topic": "wishlist" }
+    },
+    {
+      "id": "order_history",
+      "content": "View order history: Login → 'My Orders' → See all past orders with dates, items, prices, status. Download invoices. Reorder previous items with one click. Track current orders. View return/refund status.",
+      "metadata": { "category": "action", "topic": "orders" }
+    },
+    {
+      "id": "payment_security",
+      "content": "Payment security: All transactions encrypted with SSL. We never store card details. PCI DSS compliant. Secure payment gateways (Razorpay, PayPal). 3D Secure authentication for cards. UPI payments through trusted apps. 100% secure checkout.",
+      "metadata": { "category": "action", "topic": "security" }
+    },
+    {
+      "id": "cod_availability",
+      "content": "Cash on Delivery (COD) available for select locations in India. Check COD availability at checkout by entering pincode. COD orders may require advance payment for high-value items (above ₹5,000). Exact cash required at delivery.",
+      "metadata": { "category": "action", "topic": "cod" }
+    },
+    {
+      "id": "international_shipping",
+      "content": "International shipping to 50+ countries: USA, UK, Canada, Australia, UAE, Singapore, Germany, France, and more. Customs duties may apply (buyer responsibility). Shipping time 7-14 days. Tracking provided. Contact hello@indicraft.com for country-specific queries.",
+      "metadata": { "category": "action", "topic": "international" }
+    },
+    {
+      "id": "packaging_details",
+      "content": "Eco-friendly packaging: Recyclable boxes, biodegradable bubble wrap, minimal plastic. Fragile items get extra protection. Gift packaging available on request. Each package includes: Product, care instructions, certificate of authenticity, artisan card, thank you note.",
+      "metadata": { "category": "action", "topic": "packaging" }
+    },
+    {
+      "id": "damaged_delivery",
+      "content": "Received damaged item? Take photos immediately. Contact hello@indicraft.com or WhatsApp 8610677504 within 48 hours with order ID and photos. We'll arrange free return pickup and send replacement or full refund. Shipping insurance covers damages.",
+      "metadata": { "category": "action", "topic": "damage" }
+    },
+    {
+      "id": "wrong_item",
+      "content": "Received wrong item? We apologize! Contact hello@indicraft.com immediately with order ID and photos. We'll arrange free return pickup and send correct item at no extra cost. Or get full refund. Mistakes are rare but we fix them fast.",
+      "metadata": { "category": "action", "topic": "wrong_item" }
+    },
+    {
+      "id": "exchange_policy",
+      "content": "Exchange policy: Exchange within 30 days for different size/color (if available). Item must be unused with tags. Contact hello@indicraft.com to initiate exchange. We cover shipping for defective items. Customer pays shipping for preference changes.",
+      "metadata": { "category": "action", "topic": "exchange" }
+    },
+    {
+      "id": "refund_process",
+      "content": "Refund process: Return approved → Item received and inspected → Refund initiated within 5-7 business days → Money credited to original payment method. Credit card refunds: 5-10 days. UPI/Bank: 3-5 days. PayPal: 1-3 days. Email confirmation sent.",
+      "metadata": { "category": "action", "topic": "refund" }
+    },
+    {
+      "id": "price_match",
+      "content": "Found lower price elsewhere for same handmade product? Contact hello@indicraft.com with details. We'll verify authenticity and may offer price match or special discount. We ensure fair pricing for artisans while staying competitive.",
+      "metadata": { "category": "action", "topic": "price_match" }
+    },
+    {
+      "id": "pre_order",
+      "content": "Some exclusive items available for pre-order. Pre-order products marked clearly. Pay now, receive when ready (typically 14-30 days). Get updates via email. Cancel anytime before shipping for full refund. Pre-orders often get special discounts.",
+      "metadata": { "category": "action", "topic": "preorder" }
+    },
+    {
+      "id": "notify_restock",
+      "content": "Product out of stock? Click 'Notify Me' on product page. Enter email to get alert when back in stock. We'll email you immediately when available. Popular items restock within 7-14 days. Or request custom order.",
+      "metadata": { "category": "action", "topic": "restock" }
+    },
+    {
+      "id": "corporate_gifting",
+      "content": "Corporate gifting services: Bulk orders with company branding, Custom packaging with logo, Special pricing for large orders, Dedicated account manager, Invoice with GST. Email hello@indicraft.com with requirements. Minimum order: 10 pieces.",
+      "metadata": { "category": "action", "topic": "corporate" }
+    },
+    {
+      "id": "wedding_orders",
+      "content": "Wedding bulk orders: Return gifts, Trousseau items, Décor pieces, Custom designs. Special wedding packages available. Advance booking recommended (30-60 days). Discounts on bulk orders. Contact hello@indicraft.com for wedding catalog and pricing.",
+      "metadata": { "category": "action", "topic": "wedding" }
+    },
+    {
+      "id": "festival_offers",
+      "content": "Festival special offers during: Diwali, Pongal, Holi, Dussehra, Christmas, New Year. Subscribe to newsletter for early access. Festival collections launched 2-3 weeks before. Limited edition items. Free gift wrapping during festivals.",
+      "metadata": { "category": "action", "topic": "festivals" }
+    },
+    {
+      "id": "loyalty_program",
+      "content": "Loyalty rewards: Earn points on every purchase (1 point = ₹1 spent). Redeem points for discounts. Birthday special offers. Early access to new collections. Exclusive member-only sales. Join by creating account - it's free!",
+      "metadata": { "category": "action", "topic": "loyalty" }
+    },
+    {
+      "id": "refer_friend",
+      "content": "Refer a friend program: Share your referral link. Friend gets 10% off first order. You get ₹200 credit when they purchase. No limit on referrals. Find referral link in 'My Account'. Credits never expire.",
+      "metadata": { "category": "action", "topic": "referral" }
+    },
+    {
+      "id": "social_media",
+      "content": "Follow Indicraft on social media: Instagram @indicraft for product photos and artisan stories. Facebook /indicraft for updates and offers. Pinterest for craft inspiration. YouTube for artisan documentaries. Tag us in your photos with #IndicraftLove!",
+      "metadata": { "category": "action", "topic": "social" }
+    },
+    {
+      "id": "mobile_app",
+      "content": "Indicraft mobile app coming soon! Get notified: Subscribe to newsletter. App features: Easy browsing, One-tap checkout, Push notifications for offers, AR view products, Exclusive app-only deals. Available on iOS and Android.",
+      "metadata": { "category": "action", "topic": "app" }
+    },
+    {
+      "id": "virtual_consultation",
+      "content": "Need help choosing? Book free virtual consultation: Video call with our expert. Get personalized recommendations. See products live. Ask questions about artisans and crafts. Book via hello@indicraft.com or WhatsApp 8610677504. Available Mon-Sat 10AM-6PM IST.",
+      "metadata": { "category": "action", "topic": "consultation" }
+    }
+  ]
+}

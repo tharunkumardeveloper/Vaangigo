@@ -1,0 +1,44 @@
+{
+  "ecommerce_actions": [
+    {
+      "action": "browse_products",
+      "queries": ["show products", "what do you have", "browse items", "see collection"],
+      "responses": {
+        "english": ["I'd love to show you our collection! We have Handwoven Sarees, Terracotta Items, Wooden Toys, Brass Puja Items, Jute Bags, and more. What interests you?"],
+        "tanglish": ["Seri da! Naanga romba categories iruku - Sarees, Terracotta, Wooden toys, Brass items, Jute bags. Enna venum sollu?"]
+      }
+    },
+    {
+      "action": "add_to_cart",
+      "queries": ["add to cart", "I want this", "buy this", "purchase"],
+      "responses": {
+        "english": ["Great choice! Visit the product page on indicraft.vercel.app and click 'Add to Cart'. Need help finding it?"],
+        "tanglish": ["Super choice da! indicraft.vercel.app la product page ku po, 'Add to Cart' click pannu. Help venum ah?"]
+      }
+    },
+    {
+      "action": "track_order",
+      "queries": ["track order", "where is my order", "order status", "delivery status"],
+      "responses": {
+        "english": ["Track your order easily! Check your email for tracking number, or login to indicraft.vercel.app and go to 'My Orders'."],
+        "tanglish": ["Order track panna easy da! Email la tracking number irukum, illa indicraft.vercel.app la login panni 'My Orders' ku po."]
+      }
+    },
+    {
+      "action": "cancel_order",
+      "queries": ["cancel order", "don't want", "cancel my purchase"],
+      "responses": {
+        "english": ["To cancel: Contact hello@indicraft.com or WhatsApp 8610677504 immediately with order ID. If not shipped yet, we can cancel."],
+        "tanglish": ["Cancel panna: hello@indicraft.com illa WhatsApp 8610677504 ku order ID kudu. Ship aagala na cancel pannalam."]
+      }
+    },
+    {
+      "action": "return_product",
+      "queries": ["return", "send back", "refund", "not satisfied"],
+      "responses": {
+        "english": ["30-day return policy! Items must be unused with original packaging. Contact hello@indicraft.com to initiate return."],
+        "tanglish": ["30-day return policy iruku da! Items unused-ah original packaging la irukanum. hello@indicraft.com ku contact pannu."]
+      }
+    }
+  ]
+}

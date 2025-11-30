@@ -1,0 +1,76 @@
+{
+  "customer_support_tasks": [
+    {
+      "task": "chatbot_inquiries",
+      "prompt": "Chat with bot: Click chat icon (bottom right) → Type your question → Get instant answers about: Products, Orders, Shipping, Returns, Payments → Bot available 24/7 → Can't find answer? Bot connects you to human agent.",
+      "tanglish": "Bot kooda chat pannu: Chat icon click pannu (bottom right) → Un question type pannu → Instant answers kedaikum: Products, Orders, Shipping, Returns, Payments pathi → Bot 24/7 available → Answer kidaikala? Bot human agent kooda connect pannum da."
+    },
+    {
+      "task": "talk_to_agent",
+      "prompt": "Talk to human agent: In chat → Type 'Talk to agent' → Or click 'Connect to Agent' → Agent joins chat → Available Mon-Sat 9AM-6PM IST → Or call 8610677504, email hello@indicraft.com, WhatsApp support.",
+      "tanglish": "Human agent kooda pesu: Chat la → 'Talk to agent' type pannu → Illa 'Connect to Agent' click pannu → Agent chat join pannum → Mon-Sat 9AM-6PM IST available → Illa 8610677504 call pannu, hello@indicraft.com email pannu, WhatsApp support da."
+    },
+    {
+      "task": "report_product_issue",
+      "prompt": "Report issue: My Orders → Select order → 'Report Issue' → Choose: Defective, Damaged, Wrong item, Missing parts, Quality issue → Upload photos → Describe problem → Submit → Support responds in 24 hours with solution.",
+      "tanglish": "Issue report pannu: My Orders → Order select pannu → 'Report Issue' → Choose pannu: Defective, Damaged, Wrong item, Missing parts, Quality issue → Photos upload pannu → Problem describe pannu → Submit pannu → 24 hours la support solution kudukkum da."
+    },
+    {
+      "task": "report_wrong_damaged_item",
+      "prompt": "Wrong/Damaged item: Contact immediately → Call 8610677504 or email hello@indicraft.com → Provide: Order ID, Photos of item, Issue description → We arrange free return pickup → Send correct item or full refund → No questions asked!",
+      "tanglish": "Wrong/Damaged item: Seekiram contact pannu → 8610677504 call pannu illa hello@indicraft.com email pannu → Kudu: Order ID, Item photos, Issue description → Naanga free return pickup arrange pannuvom → Correct item anuppuvom illa full refund → Questions kekka maatom da!"
+    },
+    {
+      "task": "raise_escalation",
+      "prompt": "Escalate issue: If not resolved → My Orders → 'Escalate Issue' → Provide ticket number → Describe escalation reason → Senior support reviews → Resolution in 48 hours → Or email escalations@indicraft.com directly.",
+      "tanglish": "Issue escalate pannu: Resolve aagala na → My Orders → 'Escalate Issue' → Ticket number kudu → Escalation reason describe pannu → Senior support review pannum → 48 hours la resolution → Illa escalations@indicraft.com ku direct email pannu da."
+    },
+    {
+      "task": "faq_search",
+      "prompt": "Search FAQs: Visit indicraft.vercel.app/faq → Use search bar → Type question → See relevant answers → Topics: Shipping, Returns, Payments, Products, Account → Still need help? Contact support.",
+      "tanglish": "FAQ search pannu: indicraft.vercel.app/faq ku po → Search bar use pannu → Question type pannu → Relevant answers paaru → Topics: Shipping, Returns, Payments, Products, Account → Help venum ah? Support contact pannu da."
+    },
+    {
+      "task": "raise_ticket",
+      "prompt": "Raise support ticket: Contact page → 'Submit Ticket' → Fill: Name, Email, Order ID (if applicable), Issue category, Description → Attach files if needed → Submit → Get ticket number → Track status in email.",
+      "tanglish": "Support ticket raise pannu: Contact page → 'Submit Ticket' → Fill pannu: Name, Email, Order ID (irundha), Issue category, Description → Files attach pannu venum na → Submit pannu → Ticket number kedaikum → Email la status track pannu da."
+    }
+  ],
+  "loyalty_engagement_tasks": [
+    {
+      "task": "earn_loyalty_points",
+      "prompt": "Earn points: Create account → Shop on Indicraft → Earn 1 point per ₹1 spent → Bonus points on: First purchase (100 points), Reviews (50 points), Referrals (200 points), Birthday month (2x points) → Check balance in 'My Rewards'.",
+      "tanglish": "Points earn pannu: Account create pannu → Indicraft la shop pannu → ₹1 spend panna 1 point → Bonus points: First purchase (100 points), Reviews (50 points), Referrals (200 points), Birthday month (2x points) → 'My Rewards' la balance check pannu da."
+    },
+    {
+      "task": "redeem_loyalty_points",
+      "prompt": "Redeem points: At checkout → See 'Redeem Points' option → 100 points = ₹10 discount → Choose points to redeem → Discount applied to order → Minimum 100 points needed → Points never expire!",
+      "tanglish": "Points redeem pannu: Checkout la → 'Redeem Points' option paaru → 100 points = ₹10 discount → Redeem panna points choose pannu → Order-ku discount apply aagum → Minimum 100 points venum → Points expire aagadhu da!"
+    },
+    {
+      "task": "participate_deals_offers",
+      "prompt": "Get deals: Subscribe to newsletter → Follow social media (@indicraft) → Check 'Deals' page daily → Flash sales, Festival offers, Clearance sales → Set deal alerts → Early access for members → Limited time offers!",
+      "tanglish": "Deals paaru: Newsletter subscribe pannu → Social media follow pannu (@indicraft) → Daily 'Deals' page check pannu → Flash sales, Festival offers, Clearance sales → Deal alerts set pannu → Members-ku early access → Limited time offers da!"
+    },
+    {
+      "task": "subscribe_newsletters",
+      "prompt": "Subscribe: Visit indicraft.vercel.app → Scroll to footer → Enter email in 'Subscribe' box → Click 'Subscribe' → Verify email → Get: Exclusive discounts, New product launches, Artisan stories, Early sale access → Unsubscribe anytime.",
+      "tanglish": "Subscribe pannu: indicraft.vercel.app ku po → Footer ku scroll pannu → 'Subscribe' box la email enter pannu → 'Subscribe' click pannu → Email verify pannu → Kedaikum: Exclusive discounts, New products, Artisan stories, Early sale access → Eppo venalum unsubscribe pannalam da."
+    },
+    {
+      "task": "rate_review_products",
+      "prompt": "Write review: My Orders → Select delivered order → 'Rate & Review' → Give star rating (1-5) → Write review → Upload photos (optional) → Submit → Earn 50 loyalty points → Help other shoppers!",
+      "tanglish": "Review ezhuthu: My Orders → Delivered order select pannu → 'Rate & Review' → Star rating kudu (1-5) → Review ezhuthu → Photos upload pannu (optional) → Submit pannu → 50 loyalty points earn pannu → Other shoppers-ku help pannu da!"
+    },
+    {
+      "task": "review_seller",
+      "prompt": "Rate artisan: After delivery → 'Rate Artisan' → Rate: Product quality, Packaging, Communication → Write feedback → Submit → Helps artisans improve → Your feedback matters to artisan community!",
+      "tanglish": "Artisan rate pannu: Delivery piragu → 'Rate Artisan' → Rate pannu: Product quality, Packaging, Communication → Feedback ezhuthu → Submit pannu → Artisans improve panna help aagum → Un feedback artisan community-ku important da!"
+    },
+    {
+      "task": "follow_brand_store",
+      "prompt": "Follow artisan store: Visit artisan profile → Click 'Follow' button → Get notifications: New products, Special offers, Artisan updates → See followed stores in 'My Favorites' → Support your favorite artisans!",
+      "tanglish": "Artisan store follow pannu: Artisan profile ku po → 'Follow' button click pannu → Notifications varum: New products, Special offers, Artisan updates → 'My Favorites' la followed stores paaru → Un favorite artisans-a support pannu da!"
+    }
+  ]
+}

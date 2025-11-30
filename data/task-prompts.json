@@ -1,0 +1,217 @@
+{
+  "buyer_tasks": {
+    "browsing_discovery": [
+      {
+        "task": "search_products",
+        "prompt": "To search products on Indicraft: Visit indicraft.vercel.app/shop → Use search bar at top → Type product name, category, or keyword (e.g., 'silk saree', 'terracotta', 'wooden toys') → Press Enter → Browse results. You can also search by artisan name or material.",
+        "tanglish": "Product search panna: indicraft.vercel.app/shop ku po → Top la search bar use pannu → Product name, category, illa keyword type pannu (e.g., 'silk saree', 'terracotta', 'wooden toys') → Enter press pannu → Results paaru da. Artisan name illa material kooda search pannalam."
+      },
+      {
+        "task": "filter_products",
+        "prompt": "Filter products: On shop page → Click 'Filters' → Choose: Price range (₹350-6800), Category (Textiles, Pottery, Woodcraft, Jewelry, Home Décor), Rating (4+ stars), Artisan name → Apply filters → See filtered results. Clear filters anytime.",
+        "tanglish": "Filter pannu: Shop page la → 'Filters' click pannu → Choose pannu: Price range (₹350-6800), Category (Textiles, Pottery, Woodcraft, Jewelry, Home Décor), Rating (4+ stars), Artisan name → Filters apply pannu → Filtered results paaru da. Eppo venalum clear pannalam."
+      },
+      {
+        "task": "sort_products",
+        "prompt": "Sort products: On shop page → Click 'Sort by' dropdown → Choose: Price Low to High, Price High to Low, Newest First, Most Popular, Highest Rated → Products will reorder automatically. Great for finding best deals or trending items!",
+        "tanglish": "Sort pannu: Shop page la → 'Sort by' dropdown click pannu → Choose pannu: Price Low to High, Price High to Low, Newest First, Most Popular, Highest Rated → Products automatic-ah reorder aagum. Best deals illa trending items find panna super da!"
+      },
+      {
+        "task": "view_product_details",
+        "prompt": "View product details: Click on any product → See full page with: High-quality images (zoom available), Price & discounts, Artisan details & story, Materials used, Dimensions/size, Customer reviews & ratings, Care instructions, Delivery info. Add to cart or wishlist from here.",
+        "tanglish": "Product details paakanum: Enna product venalum click pannu → Full page la paaru: High-quality images (zoom pannalam), Price & discounts, Artisan details & story, Materials, Dimensions/size, Customer reviews & ratings, Care instructions, Delivery info. Inga irundhu cart illa wishlist ku add pannalam da."
+      },
+      {
+        "task": "view_related_items",
+        "prompt": "See related products: On product page → Scroll down to 'You May Also Like' or 'Similar Products' section → Browse items from same category or artisan → Click to view details. Perfect for discovering more options!",
+        "tanglish": "Related products paaru: Product page la → Keela scroll panni 'You May Also Like' illa 'Similar Products' section paaru → Same category illa artisan oda items browse pannu → Click panni details paaru. More options discover panna perfect da!"
+      },
+      {
+        "task": "browse_categories",
+        "prompt": "Browse by category: Click 'Shop' menu → Select category: Handwoven Sarees, Terracotta Items, Wooden Toys, Brass Puja Items, Block-printed Scarves, Handmade Journals, Jute Bags, Clay Kitchenware, Palm Leaf Items, Home Décor, Jewelry → See all products in that category.",
+        "tanglish": "Category wise browse pannu: 'Shop' menu click pannu → Category select pannu: Handwoven Sarees, Terracotta Items, Wooden Toys, Brass Puja Items, Block-printed Scarves, Handmade Journals, Jute Bags, Clay Kitchenware, Palm Leaf Items, Home Décor, Jewelry → Andha category la ella products paaru da."
+      }
+    ],
+    "account_profile": [
+      {
+        "task": "create_account",
+        "prompt": "Create account: Go to indicraft.vercel.app → Click 'Sign Up' → Enter: Name, Email, Password, Phone number → Verify email (check inbox) → Account created! Benefits: Faster checkout, Order tracking, Wishlist, Exclusive offers, Order history.",
+        "tanglish": "Account create pannu: indicraft.vercel.app ku po → 'Sign Up' click pannu → Enter pannu: Name, Email, Password, Phone number → Email verify pannu (inbox check pannu) → Account ready da! Benefits: Fast checkout, Order tracking, Wishlist, Exclusive offers, Order history."
+      },
+      {
+        "task": "login_logout",
+        "prompt": "Login: Click 'Login' → Enter email & password → Click 'Sign In' → Access your account. Logout: Click profile icon → Select 'Logout' → Logged out safely. Use 'Remember Me' for quick login next time.",
+        "tanglish": "Login pannu: 'Login' click pannu → Email & password enter pannu → 'Sign In' click pannu → Account access pannu. Logout: Profile icon click pannu → 'Logout' select pannu → Safe-ah logout aagum. 'Remember Me' use panna next time quick login aagum da."
+      },
+      {
+        "task": "view_edit_profile",
+        "prompt": "Edit profile: Login → Click profile icon → 'My Account' → Edit: Name, Email, Phone, Profile photo → Click 'Save Changes' → Profile updated! Keep your info current for smooth deliveries.",
+        "tanglish": "Profile edit pannu: Login pannu → Profile icon click pannu → 'My Account' → Edit pannu: Name, Email, Phone, Profile photo → 'Save Changes' click pannu → Profile update aagum! Info current-ah vechuko smooth delivery-ku da."
+      },
+      {
+        "task": "manage_address_book",
+        "prompt": "Manage addresses: My Account → 'Address Book' → Add New Address (Name, Phone, Address, Pincode, City, State) → Save → Set as default if needed → Edit or delete existing addresses. Add multiple addresses for home, office, etc.",
+        "tanglish": "Address manage pannu: My Account → 'Address Book' → Add New Address (Name, Phone, Address, Pincode, City, State) → Save pannu → Venum na default-ah set pannu → Existing addresses edit illa delete pannalam. Home, office-nu multiple addresses add pannalam da."
+      },
+      {
+        "task": "manage_saved_cards",
+        "prompt": "Manage payment methods: My Account → 'Saved Cards & UPI' → Add new card (Card number, Expiry, CVV) → Save securely → Or add UPI ID → Delete old cards if needed. All data encrypted for security.",
+        "tanglish": "Payment methods manage pannu: My Account → 'Saved Cards & UPI' → New card add pannu (Card number, Expiry, CVV) → Secure-ah save aagum → Illa UPI ID add pannu → Old cards venum na delete pannu. Ella data encrypted-ah secure da."
+      },
+      {
+        "task": "view_past_orders",
+        "prompt": "View order history: Login → 'My Orders' → See all orders with: Order date, Items, Total amount, Status (Delivered/In Transit/Cancelled) → Click order to see details → Download invoice → Reorder with one click.",
+        "tanglish": "Order history paaru: Login pannu → 'My Orders' → Ella orders paaru: Order date, Items, Total amount, Status (Delivered/In Transit/Cancelled) → Order click panni details paaru → Invoice download pannu → One click la reorder pannalam da."
+      },
+      {
+        "task": "manage_wishlist",
+        "prompt": "Manage wishlist: Click heart icon on products to add → View all in 'My Wishlist' → Move to cart when ready to buy → Remove items you don't want → Share wishlist with friends → Get notified when items go on sale!",
+        "tanglish": "Wishlist manage pannu: Products la heart icon click panni add pannu → 'My Wishlist' la ella items paaru → Buy panna ready-ana cart-ku move pannu → Venam-na items remove pannu → Friends kooda share pannu → Items sale-ku pona notification varum da!"
+      }
+    ],
+    "product_interactions": [
+      {
+        "task": "add_to_cart",
+        "prompt": "Add to cart: On product page → Choose quantity (if applicable) → Click 'Add to Cart' button → Item added! → Continue shopping or 'View Cart' → Cart icon shows item count. Items stay in cart for 30 days.",
+        "tanglish": "Cart-ku add pannu: Product page la → Quantity choose pannu (irundha) → 'Add to Cart' button click pannu → Item add aagum! → Continue shopping illa 'View Cart' → Cart icon la item count kaatum. Items 30 days cart la irukkum da."
+      },
+      {
+        "task": "remove_from_cart",
+        "prompt": "Remove from cart: Go to Cart → Find item you want to remove → Click 'Remove' or trash icon → Confirm removal → Item removed from cart. You can add it back anytime from product page or wishlist.",
+        "tanglish": "Cart la irundhu remove pannu: Cart ku po → Remove panna item find pannu → 'Remove' illa trash icon click pannu → Confirm pannu → Item cart la irundhu remove aagum. Eppo venalum product page illa wishlist la irundhu thirumba add pannalam da."
+      },
+      {
+        "task": "update_quantity",
+        "prompt": "Update quantity: In Cart → Use +/- buttons next to item → Increase or decrease quantity → Price updates automatically → Stock availability shown → Click 'Update Cart' if needed. Max quantity depends on stock.",
+        "tanglish": "Quantity update pannu: Cart la → Item pakathula +/- buttons use pannu → Quantity increase illa decrease pannu → Price automatic-ah update aagum → Stock availability kaatum → Venum na 'Update Cart' click pannu. Max quantity stock-ku depend pannum da."
+      },
+      {
+        "task": "add_to_wishlist",
+        "prompt": "Add to wishlist: On product page → Click heart icon (♥) → Item saved to wishlist → Heart turns red → Access wishlist anytime from profile menu → Move to cart when ready to purchase.",
+        "tanglish": "Wishlist ku add pannu: Product page la → Heart icon (♥) click pannu → Item wishlist la save aagum → Heart red aagum → Profile menu la irundhu eppo venalum wishlist access pannalam → Purchase panna ready-ana cart-ku move pannu da."
+      },
+      {
+        "task": "move_wishlist_to_cart",
+        "prompt": "Move wishlist to cart: Go to 'My Wishlist' → Find item → Click 'Add to Cart' button → Item moves to cart → Item stays in wishlist too (unless you remove it) → Proceed to checkout when ready.",
+        "tanglish": "Wishlist la irundhu cart-ku move pannu: 'My Wishlist' ku po → Item find pannu → 'Add to Cart' button click pannu → Item cart-ku move aagum → Item wishlist-layum irukkum (nee remove pannala na) → Ready-ana checkout ku po da."
+      },
+      {
+        "task": "compare_products",
+        "prompt": "Compare products: Select 2-3 similar items → Click 'Compare' → See side-by-side comparison: Price, Materials, Artisan, Ratings, Features → Make informed decision → Add preferred item to cart.",
+        "tanglish": "Products compare pannu: 2-3 similar items select pannu → 'Compare' click pannu → Side-by-side comparison paaru: Price, Materials, Artisan, Ratings, Features → Informed decision edu → Pudichirukura item cart-ku add pannu da."
+      },
+      {
+        "task": "check_stock_availability",
+        "prompt": "Check stock: On product page → See 'In Stock' or 'Out of Stock' status → If low stock, shows 'Only X left' → Out of stock? Click 'Notify Me' to get email when restocked → Or contact hello@indicraft.com for custom order.",
+        "tanglish": "Stock check pannu: Product page la → 'In Stock' illa 'Out of Stock' status paaru → Stock kammi-na 'Only X left' kaatum → Out of stock ah? 'Notify Me' click panni restock aana email varum → Illa hello@indicraft.com ku contact panni custom order pannu da."
+      },
+      {
+        "task": "check_delivery_availability",
+        "prompt": "Check delivery: On product page → Enter your pincode in 'Check Delivery' box → Click 'Check' → See: Delivery available (Yes/No), Estimated delivery date, Shipping charges (if any) → Free shipping over ₹2,000!",
+        "tanglish": "Delivery check pannu: Product page la → 'Check Delivery' box la un pincode enter pannu → 'Check' click pannu → Paaru: Delivery available (Yes/No), Estimated delivery date, Shipping charges (irundha) → ₹2,000 ku mela free shipping da!"
+      },
+      {
+        "task": "see_reviews_ratings",
+        "prompt": "Read reviews: On product page → Scroll to 'Customer Reviews' section → See: Overall rating (4.8/5), Number of reviews, Verified purchase reviews, Customer photos, Helpful votes → Sort by: Most Recent, Highest Rating, Most Helpful.",
+        "tanglish": "Reviews paaru: Product page la → 'Customer Reviews' section ku scroll pannu → Paaru: Overall rating (4.8/5), Reviews count, Verified purchase reviews, Customer photos, Helpful votes → Sort pannu: Most Recent, Highest Rating, Most Helpful da."
+      },
+      {
+        "task": "ask_questions",
+        "prompt": "Ask product questions: On product page → Scroll to 'Questions & Answers' → Click 'Ask a Question' → Type your question → Submit → Get answer from seller or other customers → See existing Q&As before asking.",
+        "tanglish": "Questions kelu: Product page la → 'Questions & Answers' ku scroll pannu → 'Ask a Question' click pannu → Un question type pannu → Submit pannu → Seller illa other customers answer kudupaanga → Kekura munadi existing Q&As paaru da."
+      }
+    ]
+  }
+}
+,
+    "checkout_payments": [
+      {
+        "task": "choose_delivery_address",
+        "prompt": "Select delivery address: At checkout → See saved addresses → Select one → Or 'Add New Address' → Enter details (Name, Phone, Address, Pincode, City, State, Landmark) → Save → Continue to payment.",
+        "tanglish": "Delivery address select pannu: Checkout la → Saved addresses paaru → Onnu select pannu → Illa 'Add New Address' → Details enter pannu (Name, Phone, Address, Pincode, City, State, Landmark) → Save pannu → Payment ku continue pannu da."
+      },
+      {
+        "task": "select_shipping_method",
+        "prompt": "Choose shipping: At checkout → See options: Standard (5-7 days, Free over ₹2,000), Express (2-3 days, ₹150 extra) → Select preferred method → Delivery date shown → Continue to payment.",
+        "tanglish": "Shipping choose pannu: Checkout la → Options paaru: Standard (5-7 days, ₹2,000 ku mela free), Express (2-3 days, ₹150 extra) → Preferred method select pannu → Delivery date kaatum → Payment ku continue pannu da."
+      },
+      {
+        "task": "apply_coupon_codes",
+        "prompt": "Apply coupon: At checkout → Find 'Have a Coupon?' box → Enter coupon code → Click 'Apply' → Discount applied! → See reduced total → Remove coupon if needed. Subscribe to newsletter for exclusive codes!",
+        "tanglish": "Coupon apply pannu: Checkout la → 'Have a Coupon?' box find pannu → Coupon code enter pannu → 'Apply' click pannu → Discount apply aagum! → Reduced total paaru → Venum na coupon remove pannu. Newsletter subscribe panna exclusive codes varum da!"
+      },
+      {
+        "task": "apply_gift_card",
+        "prompt": "Use gift card: At checkout → Click 'Use Gift Card' → Enter gift card number & PIN → Click 'Apply' → Balance deducted from total → Remaining amount shown → Pay balance with other methods if needed.",
+        "tanglish": "Gift card use pannu: Checkout la → 'Use Gift Card' click pannu → Gift card number & PIN enter pannu → 'Apply' click pannu → Balance total la irundhu deduct aagum → Remaining amount kaatum → Venum na balance vera method la pay pannu da."
+      },
+      {
+        "task": "use_wallet_balance",
+        "prompt": "Use wallet: At checkout → See 'Wallet Balance: ₹XXX' → Check 'Use Wallet' box → Amount deducted from order total → Pay remaining with card/UPI → Earn wallet cashback on purchases!",
+        "tanglish": "Wallet use pannu: Checkout la → 'Wallet Balance: ₹XXX' paaru → 'Use Wallet' box check pannu → Amount order total la irundhu deduct aagum → Remaining card/UPI la pay pannu → Purchases la wallet cashback earn pannu da!"
+      },
+      {
+        "task": "select_payment_mode",
+        "prompt": "Choose payment: At checkout → Select: UPI (PhonePay, GPay, Paytm), Credit/Debit Card, Net Banking, Wallets, Cash on Delivery (if available) → Enter payment details → Verify with OTP → Payment secure with SSL encryption.",
+        "tanglish": "Payment choose pannu: Checkout la → Select pannu: UPI (PhonePay, GPay, Paytm), Credit/Debit Card, Net Banking, Wallets, Cash on Delivery (available-na) → Payment details enter pannu → OTP verify pannu → Payment SSL encryption la secure da."
+      },
+      {
+        "task": "place_order",
+        "prompt": "Place order: Review cart → Confirm address → Select shipping → Apply coupons → Choose payment → Click 'Place Order' → Complete payment → Order confirmed! → Get confirmation email with order ID → Track order in 'My Orders'.",
+        "tanglish": "Order place pannu: Cart review pannu → Address confirm pannu → Shipping select pannu → Coupons apply pannu → Payment choose pannu → 'Place Order' click pannu → Payment complete pannu → Order confirm aagum! → Order ID kooda confirmation email varum → 'My Orders' la track pannu da."
+      }
+    ],
+    "order_tracking_post_purchase": [
+      {
+        "task": "track_order_status",
+        "prompt": "Track order: Login → 'My Orders' → Click order → See status: Order Placed → Packed → Shipped → Out for Delivery → Delivered → Real-time tracking with courier partner → Estimated delivery date shown → Get SMS/email updates.",
+        "tanglish": "Order track pannu: Login pannu → 'My Orders' → Order click pannu → Status paaru: Order Placed → Packed → Shipped → Out for Delivery → Delivered → Courier partner kooda real-time tracking → Estimated delivery date kaatum → SMS/email updates varum da."
+      },
+      {
+        "task": "download_invoice",
+        "prompt": "Download invoice: My Orders → Select order → Click 'Download Invoice' → PDF downloads → Contains: Order details, Items, Prices, GST breakdown, Seller info → Save for records or warranty claims.",
+        "tanglish": "Invoice download pannu: My Orders → Order select pannu → 'Download Invoice' click pannu → PDF download aagum → Irukum: Order details, Items, Prices, GST breakdown, Seller info → Records illa warranty claims-ku save pannu da."
+      },
+      {
+        "task": "contact_support_order",
+        "prompt": "Contact support: My Orders → Select order → Click 'Need Help?' → Choose issue: Delivery delay, Wrong item, Damaged, Other → Describe problem → Submit → Support responds in 24 hours → Or call 8610677504, email hello@indicraft.com.",
+        "tanglish": "Support contact pannu: My Orders → Order select pannu → 'Need Help?' click pannu → Issue choose pannu: Delivery delay, Wrong item, Damaged, Other → Problem describe pannu → Submit pannu → 24 hours la support respond pannum → Illa 8610677504 call pannu, hello@indicraft.com email pannu da."
+      },
+      {
+        "task": "change_delivery_address",
+        "prompt": "Change address: Before shipping → My Orders → Select order → 'Change Address' → Select new address or add new → Confirm → Address updated! After shipping: Contact 8610677504 immediately with order ID.",
+        "tanglish": "Address change pannu: Ship aagura munadi → My Orders → Order select pannu → 'Change Address' → New address select pannu illa add pannu → Confirm pannu → Address update aagum! Ship aana piragu: 8610677504 ku order ID kudu seekiram da."
+      },
+      {
+        "task": "cancel_order",
+        "prompt": "Cancel order: Before shipping → My Orders → Select order → 'Cancel Order' → Select reason → Confirm cancellation → Full refund in 5-7 days → After shipping: Contact hello@indicraft.com or 8610677504 for return process.",
+        "tanglish": "Order cancel pannu: Ship aagura munadi → My Orders → Order select pannu → 'Cancel Order' → Reason select pannu → Cancellation confirm pannu → 5-7 days la full refund → Ship aana piragu: hello@indicraft.com illa 8610677504 ku contact panni return process paaru da."
+      },
+      {
+        "task": "modify_order",
+        "prompt": "Modify order: Before packing → Contact hello@indicraft.com or WhatsApp 8610677504 with order ID → Request changes (quantity, items, address) → If possible, we'll modify → After packing: Cancel and place new order.",
+        "tanglish": "Order modify pannu: Pack aagura munadi → hello@indicraft.com illa WhatsApp 8610677504 ku order ID kudu → Changes request pannu (quantity, items, address) → Possible-na modify pannuvom → Pack aana piragu: Cancel panni new order place pannu da."
+      },
+      {
+        "task": "return_product",
+        "prompt": "Return product: Within 30 days → My Orders → Select order → 'Return Item' → Select items → Choose reason → Upload photos if damaged → Submit → Return pickup scheduled → Pack in original packaging → Refund in 5-7 days after inspection.",
+        "tanglish": "Product return pannu: 30 days kulla → My Orders → Order select pannu → 'Return Item' → Items select pannu → Reason choose pannu → Damaged-na photos upload pannu → Submit pannu → Return pickup schedule aagum → Original packaging la pack pannu → Inspection piragu 5-7 days la refund da."
+      },
+      {
+        "task": "replace_product",
+        "prompt": "Replace product: Within 30 days → My Orders → 'Replace Item' → Select items → Choose reason (size, color, defect) → Submit → Replacement sent after pickup → Or get refund if replacement unavailable → Free pickup for defective items.",
+        "tanglish": "Product replace pannu: 30 days kulla → My Orders → 'Replace Item' → Items select pannu → Reason choose pannu (size, color, defect) → Submit pannu → Pickup piragu replacement anuppuvom → Replacement illa-na refund → Defective items-ku free pickup da."
+      },
+      {
+        "task": "raise_refund_request",
+        "prompt": "Request refund: My Orders → Select order → 'Request Refund' → Choose reason: Cancelled, Returned, Not delivered, Damaged → Provide details → Submit → Refund processed to original payment method → Track refund status in 'My Refunds'.",
+        "tanglish": "Refund request pannu: My Orders → Order select pannu → 'Request Refund' → Reason choose pannu: Cancelled, Returned, Not delivered, Damaged → Details kudu → Submit pannu → Original payment method-ku refund process aagum → 'My Refunds' la status track pannu da."
+      },
+      {
+        "task": "check_refund_status",
+        "prompt": "Check refund: My Account → 'My Refunds' → See all refund requests → Status: Initiated, Processing, Completed → Refund timeline: 5-7 business days → Amount credited to: Card (5-10 days), UPI/Bank (3-5 days), Wallet (instant).",
+        "tanglish": "Refund check pannu: My Account → 'My Refunds' → Ella refund requests paaru → Status: Initiated, Processing, Completed → Refund timeline: 5-7 business days → Amount credit aagum: Card (5-10 days), UPI/Bank (3-5 days), Wallet (instant) da."
+      }
+    ]
+  }
+}

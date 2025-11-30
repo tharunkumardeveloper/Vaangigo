@@ -1,0 +1,94 @@
+{
+  "documents": [
+    {
+      "id": "about_indicraft",
+      "content": "Vaangigo (Indicraft) brings authentic Indian handicrafts to global homes. Founded in 2010, we bridge traditional craftsmanship and modern homes. We work directly with 500+ artisan families across 15 Indian states, ensuring fair wages and preserving traditional techniques. Our mission is to preserve India's rich handicraft heritage while creating sustainable livelihoods. We serve 50+ countries with 4.9 customer rating. Contact: hello@indicraft.com, 8610677504, Pattabiram Chennai Tamil Nadu.",
+      "metadata": { "category": "about", "topic": "company" }
+    },
+    {
+      "id": "product_categories",
+      "content": "Indicraft offers: Handwoven Sarees (Kanchipuram silk, Banarasi silk, Cotton handloom), Terracotta Items (diyas, water pots, vases), Wooden Toys (Channapatna toys, rocking horses, puzzles), Brass Puja Items (pooja thali, diyas, incense holders), Block-printed Scarves (silk scarves, dupatta, Kalamkari stoles), Handmade Journals (paper journals, leather diaries, recycled notebooks), Jute Bags (embroidered tote, shopping bags, lunch bags), Clay Kitchenware (cooking pots, water bottles, dinner sets), Palm Leaf Items (storage baskets, wall hangings, table mats), Home Décor (hand-painted coasters, bamboo lamps), Jewelry (tribal silver sets).",
+      "metadata": { "category": "products", "topic": "categories" }
+    },
+    {
+      "id": "featured_artisans",
+      "content": "Featured artisans: Meera Devi (Kanchipuram silk sarees, 28 products, 4.9 rating, income ₹45k-75k), Ravi Kumar (Pottery & ceramics, Madurai, 42 products, 4.8 rating), Lakshmi Bai (Woodcraft, Thanjavur, 35 products, 4.9 rating), Kamala Devi (Textile arts, Pudukkottai, 31 products), Suresh Chandra (Palm leaf crafts, Chettinad, 24 products), Priya Sharma (Block printing, Coimbatore, 38 products), Arjun Sharma (Brass metalwork, Jaipur, 47 products, ₹55k-85k), Anita Devi (Bamboo crafts, Guwahati, 26 products).",
+      "metadata": { "category": "artisans", "topic": "featured" }
+    },
+    {
+      "id": "popular_products",
+      "content": "Popular products: Kanchipuram Silk Saree Royal Blue ₹6,800 (4.8 rating, by Meera Devi), Banarasi Silk Saree Emerald Green ₹5,200, Traditional Terracotta Diyas Set ₹450, Terracotta Water Pot Large ₹1,200, Channapatna Wooden Toys Set ₹950, Brass Pooja Thali Set ₹2,200, Block Printed Silk Scarf Blue ₹1,650, Embroidered Jute Tote Bag ₹650, Clay Cooking Pot Set ₹1,800, Tribal Silver Jewelry Set ₹3,200, Bamboo Table Lamp ₹1,400. All products have 4.8+ ratings.",
+      "metadata": { "category": "products", "topic": "popular" }
+    },
+    {
+      "id": "shipping_delivery",
+      "content": "Indicraft ships worldwide to 50+ countries. Standard international shipping: 7-14 business days. Express shipping: 3-7 days. Domestic India shipping: 3-5 business days. Free shipping on orders above ₹2,000. All items carefully packaged with bubble wrap and foam. Fragile items get extra padding. Tracking number provided via email. Shipping insurance available for high-value items.",
+      "metadata": { "category": "shipping", "topic": "delivery" }
+    },
+    {
+      "id": "payment_methods",
+      "content": "Indicraft accepts: Credit/Debit cards (48%), PayPal (28%), Bank Transfer (16%), UPI, Net Banking, Wallets (Paytm, PhonePe, Google Pay), Cash on Delivery (COD) for select locations. All transactions are secure and encrypted. Average order value: $218 (₹18,000 approx).",
+      "metadata": { "category": "payment", "topic": "methods" }
+    },
+    {
+      "id": "return_policy",
+      "content": "30-day return policy for unused items in original condition with tags. Items must be in original packaging. Custom/personalized items cannot be returned unless damaged. If item is damaged or not as described, Indicraft covers return shipping. For other returns, customer pays return shipping. Refunds processed within 5-7 business days after receiving returned item. Exchanges available for different sizes/colors subject to availability.",
+      "metadata": { "category": "policy", "topic": "returns" }
+    },
+    {
+      "id": "authenticity_quality",
+      "content": "100% authentic handcrafted products. Every product comes with Certificate of Authenticity. We work directly with verified artisan communities. Regular quality checks conducted. Each item photographed and documented throughout creation. All products are 4.8+ rated. Premium quality guarantee. Machine-made items never sold as handcrafted. Fair trade practices ensuring artisans receive 3-4 times local average wages.",
+      "metadata": { "category": "quality", "topic": "authenticity" }
+    },
+    {
+      "id": "care_instructions",
+      "content": "Product care: Handloom textiles - hand wash cold water, mild detergent, air dry in shade, silk needs dry cleaning. Pottery/Ceramics - soft cloth with mild soap, avoid abrasive cleaners, avoid sudden temperature changes. Wooden crafts - dust regularly, apply natural oil occasionally, avoid direct sunlight and moisture. Jute bags - spot clean, air dry. Terracotta - handle gently, wipe with dry cloth. All products come with detailed care instructions.",
+      "metadata": { "category": "care", "topic": "maintenance" }
+    },
+    {
+      "id": "customization_services",
+      "content": "Indicraft offers customization for many products. Request personalized designs, colors, sizes, custom engravings. Perfect for gifts, corporate orders, weddings. Contact us with requirements and artisans will create unique pieces. Bulk orders accepted with special discounts. Minimum order quantity varies by product. Custom orders take additional 7-14 days.",
+      "metadata": { "category": "services", "topic": "customization" }
+    },
+    {
+      "id": "artisan_empowerment",
+      "content": "Indicraft empowers 500+ artisan families. Success stories: Meera Devi income increased from ₹8k to ₹65k/month, now employs 12 women. Ravi Kumar from ₹6k to ₹55k/month, employs 8 craftsmen. Lakshmi Bai from ₹5k to ₹48k/month, supports 15 women. Kamala Devi from ₹3k to ₹42k/month, employs 25 women. Average income growth: 800%. 250+ families supported. 10 craft traditions preserved. Fair wages, skill development, long-term partnerships.",
+      "metadata": { "category": "impact", "topic": "empowerment" }
+    },
+    {
+      "id": "customer_stats",
+      "content": "Indicraft statistics: 12,520 total buyers (+42% YoY), 28,450 total orders (+38% YoY), 67% repeat rate, Average order value $218. Regional distribution: North America 3,250 buyers (avg $245), Europe 2,890 buyers (avg $198), Asia Pacific 4,120 buyers (avg $167), Middle East 1,560 buyers (avg $312), Australia 980 buyers (avg $223). Top categories: Handloom Textiles 34%, Jewelry 28%, Home Décor 18%, Pottery 12%, Handicrafts 8%.",
+      "metadata": { "category": "stats", "topic": "customers" }
+    },
+    {
+      "id": "trending_items",
+      "content": "Currently trending: Macrame wall hangings and plant hangers, Jute tote bags, Terracotta jewelry sets, Wooden minimal home décor, Handwoven cotton bags, Traditional Madhubani and Warli art, Kanchipuram silk sarees, Block-printed scarves, Bamboo crafts, Palm leaf items. Eco-friendly and sustainable products are highly popular. Purchase peak time: Afternoon 12PM-6PM (42%), Evening 6PM-10PM (31%).",
+      "metadata": { "category": "trends", "topic": "popular" }
+    },
+    {
+      "id": "gift_recommendations",
+      "content": "Perfect gift ideas from Indicraft: Personalized wooden items, Terracotta jewelry sets (₹3,200), Handwoven bags (₹650-2,400), Traditional art pieces (Madhubani, Warli, Tanjore), Eco-friendly home décor (bamboo lamps ₹1,400), Customized pottery, Brass pooja items (₹750-2,200), Block-printed silk scarves (₹1,650), Handmade journals (₹450-1,200). Gift wrapping available on request. Custom orders for special occasions.",
+      "metadata": { "category": "gifts", "topic": "recommendations" }
+    },
+    {
+      "id": "sustainability",
+      "content": "Indicraft promotes sustainability and eco-friendly practices. Products use biodegradable materials: jute, cotton, terracotta, wood, bamboo, palm leaf, natural dyes. Minimal recyclable packaging. Traditional crafts are naturally sustainable. Supporting artisans preserves eco-conscious traditional methods. Eco-Craft Innovation Awards to artisans. Sustainable living through beautiful handmade products.",
+      "metadata": { "category": "sustainability", "topic": "eco_friendly" }
+    },
+    {
+      "id": "heritage_crafts",
+      "content": "Indicraft preserves 400-year legacy crafts: Kanchipuram silk weaving (from silkworms to master weavers), Tanjore paintings (golden masterpieces), Temple jewelry (ancient designs), South Indian woodcarving, Traditional block printing, Kashmiri carpet weaving, Stone carving from Mahabalipuram, Pottery techniques, Bamboo crafts from tribal communities. Each craft represents centuries of tradition passed through generations.",
+      "metadata": { "category": "heritage", "topic": "crafts" }
+    },
+    {
+      "id": "customer_support",
+      "content": "Indicraft customer support: Email hello@indicraft.com and support@indicraft.com, Phone +91 8610677504, WhatsApp available (fastest response). Response within 24 hours. Support in English, Hindi, and Tamil. Help with product selection, customization, order tracking, issues. Business hours: Mon-Fri 9AM-6PM, Sat 10AM-4PM IST. Workshop visits by appointment in Chennai.",
+      "metadata": { "category": "support", "topic": "contact" }
+    },
+    {
+      "id": "website_features",
+      "content": "Indicraft website (indicraft.vercel.app) features: Shop page with 30+ products, Artisan Stores showcasing individual craftspeople, Artisan Stories with empowerment journeys, Buyer Patterns showing global customer insights, Blog with craft stories and care guides, About page with mission and values, Contact page, FAQ section. 100% authentic certified products, Quality assured, Free shipping over ₹2,000.",
+      "metadata": { "category": "website", "topic": "features" }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+    "name": "chatbot-api",
+    "version": "1.0.0",
+    "description": "Context-aware chatbot API with RAG for Vercel",
+    "main": "api/chat.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js",
+        "test": "node test-chat.js",
+        "deploy": "vercel --prod"
+    },
+    "dependencies": {
+        "groq-sdk": "^0.7.0",
+        "cohere-ai": "^7.10.0",
+        "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+        "vercel": "^33.0.0"
+    }
+}
