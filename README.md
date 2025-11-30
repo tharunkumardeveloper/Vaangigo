@@ -74,6 +74,25 @@ Open http://localhost:3001/test in your browser
 }
 ```
 
+### Webhook Endpoint (Zobot/SalesIQ Compatible)
+
+**POST** `/api/webhook`
+
+```json
+{
+  "message": "hi there",
+  "sessionId": "user123"
+}
+```
+
+### Zoho Assist Integration
+
+**POST** `/api/zoho-assist-webhook`
+
+Automatically responds to remote support session events. See [ZOHO-ASSIST-SETUP.md](./ZOHO-ASSIST-SETUP.md) for setup guide.
+
+Supported events: Session Start, Customer Join, Inbound Request Create, etc.
+
 ### Health Check
 
 **GET** `/api/health`

@@ -1,4 +1,4 @@
-const Groq = require('groq-sdk');
+const Gitq = require('groq-sdk');
 const ContextManager = require('../lib/context');
 const RAGSystem = require('../lib/rag');
 
