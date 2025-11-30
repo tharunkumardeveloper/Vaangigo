@@ -43,19 +43,36 @@ module.exports = async (req, res) => {
     console.log('Webhook received:', JSON.stringify(req.body));
     
     // Handle different request formats (Zobot/SalesIQ compatibility)
-    let message, sessionId, init;
+    let message, sessionId, init, handler, operation;
     
     if (req.body) {
-      message = req.body.message || req.body.text || req.body.query || req.body.question;
-      sessionId = req.body.sessionId || req.body.session_id || req.body.visitor_id || req.body.user_id || req.body.chat_id || 'default';
-      init = req.body.init || false;
+      // Extract Zobot-specific fields
+      handler = req.body.handler;
+      operation = req.body.operation;
       
-      // Zobot nested format
-      if (!message && req.body.visitor && req.body.visitor.question) {
-        message = req.body.visitor.question;
+      // Zobot format: handler=trigger (first message) or handler=message (subsequent)
+      if (handler === 'trigger') {
+        init = true;
       }
-      if (!sessionId && req.body.visitor && req.body.visitor.id) {
+      
+      // Extract message from various formats
+      if (req.body.request && req.body.request.message && req.body.request.message.text) {
+        // Zobot format: request.message.text
+        message = req.body.request.message.text;
+      } else {
+        message = req.body.message || req.body.text || req.body.query || req.body.question;
+      }
+      
+      // Extract sessionId from visitor object or other fields
+      if (req.body.visitor && req.body.visitor.id) {
         sessionId = req.body.visitor.id;
+      } else {
+        sessionId = req.body.sessionId || req.body.session_id || req.body.visitor_id || req.body.user_id || req.body.chat_id || 'default';
+      }
+      
+      // Legacy init flag
+      if (req.body.init) {
+        init = true;
       }
     }
 
