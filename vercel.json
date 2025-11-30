@@ -11,9 +11,5 @@
       "src": "/api/(.*)",
       "dest": "/api/$1"
     }
-  ],
-  "env": {
-    "OPENAI_API_KEY": "@openai-api-key",
-    "COHERE_API_KEY": "@cohere-api-key"
-  }
+  ]
 }
