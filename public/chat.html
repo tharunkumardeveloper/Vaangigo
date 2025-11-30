@@ -234,7 +234,8 @@
                 if (data.success) {
                     addMessage(data.message, true);
                 } else {
-                    addMessage('Sorry, something went wrong. Please try again.', true);
+                    addMessage('Error: ' + (data.error || 'Something went wrong'), true);
+                    console.error('API Error:', data);
                 }
             } catch (error) {
                 hideTyping();
